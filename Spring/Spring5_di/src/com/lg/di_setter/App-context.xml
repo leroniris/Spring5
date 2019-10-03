@@ -23,12 +23,12 @@
         p:salary="55000"/>
 
     <!--属性注入对象问题-->
-    <bean id="cat1" class="com.lg.di_setter.Cat1"/>
+    <bean id="cat2" class="com.lg.di_setter.Cat1"/>
     <bean id="person1" class="com.lg.di_setter.Person1">
-        <!--<property name="cat1">-->
-            <!--<ref bean="cat1"></ref>-->
+        <!--<property name="cat2">-->
+            <!--<ref bean="cat2"></ref>-->
         <!--</property>-->
-        <property name="cat1" ref="cat1"/>
+        <property name="cat2" ref="cat2"/>
     </bean>
 
     <!--属性注入集合类型问题-->

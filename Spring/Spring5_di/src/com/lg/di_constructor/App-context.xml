@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--构造器注入常量问题-->
+    <bean id="employee2" class="com.lg.di_constructor.Employee2">
+        <!--根据索引设置-->
+        <!--<constructor-arg index="0" value="Will"/>-->
+        <!--<constructor-arg index="1" value="18"/>-->
+        <!--<constructor-arg index="2" value="56000"/>-->
+
+        <!--根据参数类型设置-->
+        <!--<constructor-arg type="java.lang.String" value="Will"/>-->
+        <!--<constructor-arg type="java.lang.Integer" value="18"/>-->
+        <!--<constructor-arg type="java.math.BigDecimal" value="56000"/>-->
+
+        <!--根据参数名设置-->
+        <constructor-arg name="name" value="Will"/>
+        <constructor-arg name="age" value="18"/>
+        <constructor-arg name="salary" value="56000"/>
+        <!--空值设置-->
+        <!--<constructor-arg name="salary">-->
+            <!--<null/>-->
+        <!--</constructor-arg>-->
+    </bean>
+
+    <!--构造器注入对象问题-->
+    <!--<bean id="cat2" class="com.lg.di_constructor.Cat2"/>-->
+    <!--<bean id="person2" class="com.lg.di_constructor.Person2">-->
+        <!--<constructor-arg name="cat2" ref="cat2"/>-->
+    <!--</bean>-->
+
+    <!--内部bean的使用：此时cat2只服务于person2这个bean-->
+    <bean id="person2" class="com.lg.di_constructor.Person2">
+        <constructor-arg name="cat2">
+            <bean id="cat2" class="com.lg.di_constructor.Cat2"/>
+        </constructor-arg>
+    </bean>
+
+    <!--构造器注入集合类型问题-->
+    <bean id="collectionBean2" class="com.lg.di_constructor.CollectionBean2">
+        <constructor-arg name="set">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="array">
+            <array>
+                <value>array1</value>
+                <value>array2</value>
+            </array>
+        </constructor-arg>
+        <constructor-arg name="map">
+            <map>
+                <entry key="key1" value="map1"/>
+                <entry key="key2" value="map2"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg name="prop">
+            <props>
+                <prop key="pKey1">pProp1</prop>
+                <prop key="pKey2">pProp2</prop>
+            </props>
+        </constructor-arg>
+    </bean>
+
+</beans>

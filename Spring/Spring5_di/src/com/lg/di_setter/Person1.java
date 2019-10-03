@@ -9,7 +9,7 @@ public class Person1 {
 
     @Override
     public String toString() {
-        return "Person1{" +
+        return "Person2{" +
                 "cat1=" + cat1 +
                 '}';
     }

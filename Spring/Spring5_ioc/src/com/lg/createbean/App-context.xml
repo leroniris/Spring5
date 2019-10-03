@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--① 通过构造器实例化（无参构造器），最标准，使用最多-->
-    <bean id="cat1" class="com.lg.createbean._01_constructor.Cat1"/>
+    <bean id="cat2" class="com.lg.createbean._01_constructor.Cat1"/>
 
 
     <!--② 静态工厂方法实例化：解决系统遗留问题-->
