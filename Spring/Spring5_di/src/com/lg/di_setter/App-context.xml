@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--属性注入常量问题-->
+    <bean id="employee1" class="com.lg.di_setter.Employee1">
+        <property name="name">
+            <value>Will</value>
+        </property>
+        <property name="age">
+            <value>17</value>
+        </property>
+        <property name="salary">
+            <value>50000</value>
+        </property>
+    </bean>
+
+
+    <!--属性注入对象问题-->
+    <bean id="cat1" class="com.lg.di_setter.Cat1"/>
+    <bean id="person1" class="com.lg.di_setter.Person1">
+        <!--<property name="cat1">-->
+            <!--<ref bean="cat1"></ref>-->
+        <!--</property>-->
+        <property name="cat1" ref="cat1"/>
+    </bean>
+
+    <!--属性注入集合类型问题-->
+    <bean id="collectionBean1" class="com.lg.di_setter.CollectionBean1">
+        <!--Set集合-->
+        <property name="set">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </property>
+        <!--List集合-->
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </property>
+        <!--数组类型-->
+        <property name="array">
+            <!--<list>-->
+                <!--<value>array1</value>-->
+                <!--<value>array2</value>-->
+            <!--</list>-->
+            <array>
+                <value>array1</value>
+                <value>array2</value>
+            </array>
+        </property>
+        <!--Map类型-->
+        <property name="map">
+            <map>
+                <entry key="key1" value="value1"/>
+                <entry key="key2" value="value2"/>
+            </map>
+        </property>
+        <!--Properties类型-->
+        <property name="prop">
+            <props>
+                <prop key="pKey1">pVal1</prop>
+                <prop key="pKey2">pVal2</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
