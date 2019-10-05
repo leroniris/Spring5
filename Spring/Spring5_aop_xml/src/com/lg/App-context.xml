@@ -19,15 +19,19 @@
     <!--AOP配置：在什么地点+什么时机+做什么-->
     <!--1、WHAT,做什么增强-->
     <bean id="txManager" class="com.lg.tx.TransactionManager"/>
-    <aop:config proxy-target-class="true">
+    <!--设置为CGLIB代理-->
+    <!--<aop:config proxy-target-class="true">-->
+    <aop:config>
         <!--配置AOP切面-->
         <aop:aspect ref="txManager"><!--关联WHAT-->
             <!--2、WHERE,在哪些包中的的哪些类的哪些方法做增强-->
             <aop:pointcut id="txPoint" expression="execution(* com.lg.service.*Service.*(..))"/>
             <!--3、WHEN,在方法执行的什么时机做增强-->
-            <aop:before method="begin" pointcut-ref="txPoint"/>
-            <aop:after-returning method="commit" pointcut-ref="txPoint"/>
-            <aop:after-throwing method="rollback" pointcut-ref="txPoint"/>
+            <!--<aop:before method="begin" pointcut-ref="txPoint"/>-->
+            <!--<aop:after-returning method="commit" pointcut-ref="txPoint"/>-->
+            <!--<aop:after-throwing method="rollback" pointcut-ref="txPoint" throwing="ex"/>-->
+            <!--<aop:after method="release" pointcut-ref="txPoint"/>-->
+            <aop:around method="aroundMethod" pointcut-ref="txPoint"/>
         </aop:aspect>
     </aop:config>
 
