@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import java.util.List;
+
 @SpringJUnitConfig
 public class App {
 
@@ -34,6 +36,20 @@ public class App {
     void testDelete() {
 
         dao.delete(5L);
+    }
+
+    @Test
+    void testGet() {
+        Employee employee = dao.get(3L);
+        System.out.println(employee);
+    }
+
+    @Test
+    void testListAll() {
+        List<Employee> list = dao.listAll();
+        for(Employee e : list) {
+            System.out.println(e);
+        }
     }
 
 }
